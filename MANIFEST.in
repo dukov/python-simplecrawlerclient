@@ -1,0 +1,6 @@
+include AUTHORS
+exclude .gitignore
+exclude .gitreview
+recursive-include crawlerclient *
+
+global-exclude *.pyc
