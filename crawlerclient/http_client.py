@@ -10,6 +10,7 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
+import json
 import logging
 import requests
 
@@ -25,8 +26,15 @@ class HTTPClient(object):
         r = requests.get(self.root + path)
         return r.json()
 
+    def post(self, path, data):
+        r = requests.post(self.root + path, data=data)
+        return r.text
+
     def get_status(self):
         return self.get('status')
 
     def get_agents(self):
         return self.get('agents')
+
+    def post_job(self, job_data):
+        return self.post('jobs', json.dumps(job_data))
